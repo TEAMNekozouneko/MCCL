@@ -2,9 +2,9 @@ package com.nekozouneko.mccl.lib;
 
 public class VerifyData {
 
-    public String name;
-    public String key;
-    public long timestamp;
+    private String name;
+    private String key;
+    private long timestamp;
 
     // setter
 
