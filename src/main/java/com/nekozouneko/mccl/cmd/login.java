@@ -48,10 +48,9 @@ public class login implements CommandExecutor, TabCompleter {
         vd.setKey(privkey);
         vd.setTimestamp(new Date().getTime());
 
-        Gson gson = new Gson();
-        String output = gson.toJson(vd);
+        String output = vd.getName()+"\n"+vd.getKey()+"\n"+vd.getTimestamp();
 
-        File v = new File(instance.getDataFolder(), "auth.json");
+        File v = new File(instance.getDataFolder(), register.getName()+".txt");
 
         if (!instance.getDataFolder().exists()) {
             try {
