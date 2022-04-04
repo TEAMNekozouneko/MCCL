@@ -1,0 +1,13 @@
+name: MCCL
+version: '${version}'
+main: com.nekozouneko.mccl.MCCL
+api-version: 1.18
+authors: [ Taitaitatata, RunqJP ]
+description: MCCLはマイクラチャットとの連携プラグインです。
+website: "https://nekozouneko.com/nekochat/"
+
+commands:
+  login:
+    aliases: ["register"]
+    description: "マイクラチャットとの連携コマンドです。"
+    usage: '/<command>'
