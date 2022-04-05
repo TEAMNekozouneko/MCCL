@@ -6,6 +6,7 @@ import com.nekozouneko.mccl.MCCL;
 import com.nekozouneko.mccl.lib.VerifyData;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.apache.commons.lang.RandomStringUtils;
 
@@ -46,7 +47,7 @@ public class login implements CommandExecutor, TabCompleter {
 
         vd.setName(sender.getName());
         vd.setKey(privkey);
-        vd.setTimestamp(new Date().getTime());
+        vd.setTimestamp(new Date().getTime() / 1000);
 
         String output = vd.getName()+"\n"+vd.getKey()+"\n"+vd.getTimestamp();
 
@@ -55,7 +56,10 @@ public class login implements CommandExecutor, TabCompleter {
         if (!instance.getDataFolder().exists()) {
             try {
                 instance.getDataFolder().mkdir();
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+                register.sendMessage(ChatColor.RED + "認証コードの生成でエラーが発生しました。");
+                return true;
+            }
         }
 
         try {
@@ -63,10 +67,15 @@ public class login implements CommandExecutor, TabCompleter {
             opf.write(output);
             opf.close();
         } catch (IOException e) {
-            register.sendMessage("なんか跳ねられた"+e.getMessage());
+            register.sendMessage(ChatColor.RED + "認証コードの生成でエラーが発生しました。");
+            return true;
         }
 
-        BaseComponent code = new TextComponent(ChatColor.AQUA + privkey);
+        BaseComponent code = new TextComponent("§b"+"§n"+privkey);
+        BaseComponent[] showtxt = new BaseComponent[1];
+        showtxt[0] = new TextComponent("クリックしてコピー");
+        code.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, showtxt));
+
         code.setClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, privkey));
 
         BaseComponent ct = new TextComponent(ChatColor.GREEN + "認証コード: ");
