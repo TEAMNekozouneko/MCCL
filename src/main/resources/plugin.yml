@@ -8,6 +8,6 @@ website: "https://nekozouneko.com/nekochat/"
 
 commands:
   login:
-    aliases: ["register"]
+    aliases: ["register", "ログイン"]
     description: "マイクラチャットとの連携コマンドです。"
     usage: '/<command>'
