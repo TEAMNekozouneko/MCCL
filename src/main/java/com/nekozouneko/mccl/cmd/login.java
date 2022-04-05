@@ -1,13 +1,13 @@
 package com.nekozouneko.mccl.cmd;
 
-import com.google.gson.Gson;
 import com.nekozouneko.mccl.MCCL;
-
 import com.nekozouneko.mccl.lib.VerifyData;
+
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
+
 import org.apache.commons.lang.RandomStringUtils;
 
 import org.bukkit.ChatColor;
